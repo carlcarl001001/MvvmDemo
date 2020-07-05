@@ -17,17 +17,13 @@ import androidx.databinding.Bindable;
 public class MVVMViewModel extends BaseObservable {
     private String result;
     private MVVMModel mvvmModel;
-    private ActivityMainBinding binding;
+    private String userInput;
     public MVVMViewModel(Application application) {
         mvvmModel = new MVVMModel();
     }
-    public MVVMViewModel(Application application, ActivityMainBinding binding) {
-        mvvmModel = new MVVMModel();
-        this.binding = binding;
-    }
+
 
     public void getData(View view){
-        String userInput = binding.etAccount.getText().toString();
         mvvmModel.getAccountData(userInput, new MCallback() {
             @Override
             public void onSuccess(Account account) {
@@ -51,5 +47,15 @@ public class MVVMViewModel extends BaseObservable {
     public void setResult(String result) {
         this.result = result;
         notifyPropertyChanged(com.example.carl.mvvmdemo.BR.result);
+    }
+
+    @Bindable
+    public String getUserInput() {
+        return userInput;
+    }
+
+    public void setUserInput(String userInput) {
+        this.userInput = userInput;
+        notifyPropertyChanged(com.example.carl.mvvmdemo.BR.userInput);
     }
 }

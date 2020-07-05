@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         //setContentView(R.layout.activity_main);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        MVVMViewModel mvvmViewModel = new MVVMViewModel(getApplication(),binding);
+        MVVMViewModel mvvmViewModel = new MVVMViewModel(getApplication());
         binding.setViewModel(mvvmViewModel);
 
 
